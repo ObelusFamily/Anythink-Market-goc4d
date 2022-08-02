@@ -52,10 +52,10 @@ class Editor extends React.Component {
       const item = {
         title: this.props.title,
         description: this.props.description,
-        image: this.props.image,
+        image: this.props.image?this.props.image:require('../imgs/placeholder.png') ,
         tagList: this.props.tagList,
       };
-
+      
       const slug = { slug: this.props.itemSlug };
       const promise = this.props.itemSlug
         ? agent.Items.update(Object.assign(item, slug))
@@ -123,6 +123,7 @@ class Editor extends React.Component {
                       placeholder="Image url"
                       value={this.props.image}
                       onChange={this.changeImage}
+                      required
                     />
                   </fieldset>
 
